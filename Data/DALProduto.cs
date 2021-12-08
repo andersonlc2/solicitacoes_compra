@@ -24,12 +24,15 @@ namespace Data
         public void Insert(Produto produto)
         {
             var command = new SqlCommand(
-                "INSERT INTO Produto(Descricao, PrecoMedio) " +
-                "Values(@descricao, @precomedio)", 
+                "INSERT INTO Produto(Descricao, PrecoMedio, MaiorPreco, MenorPreco) " +
+                "Values(@descricao, @precomedio, @maior, @menor)", 
                 connection
             );
             command.Parameters.AddWithValue("@descricao", produto.Descricao);
             command.Parameters.AddWithValue("@precomedio", produto.PrecoMedio);
+            command.Parameters.AddWithValue("@maior", 0);
+            command.Parameters.AddWithValue("@menor", 0);
+
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -109,6 +112,37 @@ namespace Data
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+        }
+
+        public IEnumerable<Produto> GetIList()
+        {
+            IList<Produto> list = new List<Produto>();
+
+            var adapter = new SqlDataAdapter(
+                "SELECT ID, Descricao, PrecoMedio, MaiorPreco, MenorPreco " +
+                "FROM Produto ",
+                connection
+            );
+            var builder = new SqlCommandBuilder(adapter);
+            var table = new DataTable();
+            adapter.Fill(table);
+            connection.Close();
+
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                var row = table.Rows[i];
+                list.Add(new Produto()
+                {
+                    ID = Convert.ToInt64(row["ID"]),
+                    Descricao = (string )row["Descricao"],
+                    PrecoMedio = Convert.ToDouble(row["PrecoMedio"]),
+                    MaiorPreco = Convert.ToDouble(row["MaiorPreco"]),
+                    MenorPReco = Convert.ToDouble(row["MenorPreco"])
+                });
+            }
+
+
+            return list;
         }
     }
 }

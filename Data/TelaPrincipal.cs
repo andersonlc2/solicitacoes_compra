@@ -21,5 +21,10 @@ namespace Data
         {
             new CadastroProdutoForm().ShowDialog();
         }
+
+        private void novaSolicitacaoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new SolicitacaoForm().ShowDialog();
+        }
     }
 }

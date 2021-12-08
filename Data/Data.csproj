@@ -69,7 +69,14 @@
       <DependentUpon>CadastroProdutoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DALProduto.cs" />
+    <Compile Include="DALSolicitacao.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="SolicitacaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SolicitacaoForm.Designer.cs">
+      <DependentUpon>SolicitacaoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +99,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SolicitacaoForm.resx">
+      <DependentUpon>SolicitacaoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TelaPrincipal.resx">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
