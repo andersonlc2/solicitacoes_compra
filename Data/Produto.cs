@@ -12,10 +12,15 @@ namespace Data
         public string Descricao { get; set; }
         public double? PrecoMedio { get; set; }
 
+        public double? MaiorPreco { get; set; }
+        public double? MenorPReco { get; set; }
+
         public Produto ()
         {
             this.ID = null;
             this.PrecoMedio = 0;
+            this.MaiorPreco = 0;
+            this.MenorPReco = 0;
         }
 
     }
