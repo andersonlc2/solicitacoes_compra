@@ -123,7 +123,7 @@
             this.label2.Location = new System.Drawing.Point(108, 5);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 25);
+            this.label2.Size = new System.Drawing.Size(127, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "ID:";
             // 
@@ -139,16 +139,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(108, 35);
+            this.label3.Location = new System.Drawing.Point(108, 33);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 25);
+            this.label3.Size = new System.Drawing.Size(127, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Chamado:";
             // 
             // txtChamado
             // 
-            this.txtChamado.Location = new System.Drawing.Point(241, 33);
+            this.txtChamado.Location = new System.Drawing.Point(241, 31);
             this.txtChamado.MaxLength = 5;
             this.txtChamado.Name = "txtChamado";
             this.txtChamado.Size = new System.Drawing.Size(90, 22);
@@ -158,16 +158,16 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(108, 65);
+            this.label4.Location = new System.Drawing.Point(108, 61);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 25);
+            this.label4.Size = new System.Drawing.Size(127, 23);
             this.label4.TabIndex = 4;
             this.label4.Text = "Solicitante:";
             // 
             // txtSolicitante
             // 
-            this.txtSolicitante.Location = new System.Drawing.Point(241, 63);
+            this.txtSolicitante.Location = new System.Drawing.Point(241, 59);
             this.txtSolicitante.Name = "txtSolicitante";
             this.txtSolicitante.Size = new System.Drawing.Size(430, 22);
             this.txtSolicitante.TabIndex = 5;
@@ -176,16 +176,16 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(108, 95);
+            this.label5.Location = new System.Drawing.Point(108, 89);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 25);
+            this.label5.Size = new System.Drawing.Size(127, 23);
             this.label5.TabIndex = 6;
             this.label5.Text = "Departamento:";
             // 
             // txtDepartamento
             // 
-            this.txtDepartamento.Location = new System.Drawing.Point(241, 93);
+            this.txtDepartamento.Location = new System.Drawing.Point(241, 87);
             this.txtDepartamento.Name = "txtDepartamento";
             this.txtDepartamento.Size = new System.Drawing.Size(430, 22);
             this.txtDepartamento.TabIndex = 7;
@@ -194,17 +194,17 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(108, 125);
+            this.label6.Location = new System.Drawing.Point(108, 117);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(127, 25);
+            this.label6.Size = new System.Drawing.Size(127, 23);
             this.label6.TabIndex = 8;
             this.label6.Text = "Produto:";
             // 
             // cbxProdutos
             // 
             this.cbxProdutos.FormattingEnabled = true;
-            this.cbxProdutos.Location = new System.Drawing.Point(241, 123);
+            this.cbxProdutos.Location = new System.Drawing.Point(241, 115);
             this.cbxProdutos.Name = "cbxProdutos";
             this.cbxProdutos.Size = new System.Drawing.Size(430, 24);
             this.cbxProdutos.TabIndex = 9;
@@ -213,16 +213,16 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(108, 155);
+            this.label7.Location = new System.Drawing.Point(108, 145);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 25);
+            this.label7.Size = new System.Drawing.Size(127, 23);
             this.label7.TabIndex = 10;
             this.label7.Text = "Quantidade:";
             // 
             // txtQuantidade
             // 
-            this.txtQuantidade.Location = new System.Drawing.Point(241, 153);
+            this.txtQuantidade.Location = new System.Drawing.Point(241, 143);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(90, 22);
             this.txtQuantidade.TabIndex = 11;
@@ -231,17 +231,17 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Location = new System.Drawing.Point(108, 185);
+            this.label8.Location = new System.Drawing.Point(108, 173);
             this.label8.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(127, 30);
+            this.label8.Size = new System.Drawing.Size(127, 31);
             this.label8.TabIndex = 12;
             this.label8.Text = "Data:";
             // 
             // dtpData
             // 
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpData.Location = new System.Drawing.Point(241, 183);
+            this.dtpData.Location = new System.Drawing.Point(241, 171);
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(90, 22);
             this.dtpData.TabIndex = 13;

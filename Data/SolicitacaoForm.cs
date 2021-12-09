@@ -20,6 +20,7 @@ namespace Data
         {
             InitializeComponent();
             InitializeCbx();
+            FillTable();
         }
 
         private void InitializeCbx()
@@ -54,6 +55,11 @@ namespace Data
 
 
             btnGravar.Enabled = false;
+        }
+
+        private void FillTable()
+        {
+            dgvSolicitacoes.DataSource = dal.GetAllSolic();
         }
     }
 }

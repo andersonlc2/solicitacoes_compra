@@ -15,15 +15,15 @@ namespace Data
         public void Insert(Solicitacao solic)
         {
             var command = new SqlCommand(
-                "INSERT INTO Solicitacao(Chamado, Solicitante, Departamento, IDProduto, Data, Quantidade) " +
-                "Values(@chamado, @solicitante, @departamento, @idproduto, @data, @quantidade)",
+                "INSERT INTO Solicitacao(Chamado, Solicitante, Departamento, IDProduto, DataChamado, Quantidade) " +
+                "Values(@chamado, @solicitante, @departamento, @idproduto, @datachamado, @quantidade)",
                 connection
             );
             command.Parameters.AddWithValue("@chamado", solic.Chamado);
             command.Parameters.AddWithValue("@solicitante", solic.Solicitante);
             command.Parameters.AddWithValue("@departamento", solic.Departamento);
             command.Parameters.AddWithValue("@idproduto", solic.Produto.ID);
-            command.Parameters.AddWithValue("@data", solic.DataChamado);
+            command.Parameters.AddWithValue("@datachamado", solic.DataChamado);
             command.Parameters.AddWithValue("@quantidade", solic.Quantidade);
 
             connection.Open();
@@ -39,12 +39,16 @@ namespace Data
         public DataTable GetAllSolic()
         {
             var adapter = new SqlDataAdapter(
-                "SELECT " +  //////////////////////// PAREI AQUI
-                "FROM " +
-                "WHERE "
+                "SELECT Solicitacao.ID as ID, Descricao as Produto, Quantidade as 'Qnt.', PrecoMedio as 'Média MercadoLivre', " +
+                "MaiorPreco as 'Maior Preço', MenorPreco as 'Menor Preço', Chamado as 'Número Chamado', DataChamado as Data, Solicitante, Departamento " + 
+                "FROM Solicitacao, Produto " +
+                "WHERE Produto.ID = Solicitacao.IDProduto"
                 , connection
             );
+            var builder = new SqlCommandBuilder(adapter);
             var table = new DataTable();
+            adapter.Fill(table);
+            connection.Close();
 
             return table;
         }
