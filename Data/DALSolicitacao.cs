@@ -7,6 +7,7 @@ using System.Data;
 using System.IO;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Data
 {
@@ -63,31 +64,9 @@ namespace Data
         }
 
         public void GetPrecos()
-        {   
-            /*
-            try
-            {
-                StreamWriter sw = new StreamWriter("D:\\Backup\\Projetos\\C\\C#\\solicitacoes_compra\\Data\\precos.txt");
-                var prod = new DataTable();
-                prod = GetAllSolic();
-                for (var i = 0; i < prod.Rows.Count; i++)
-                {
-                    var row = prod.Rows[i];
-                    sw.WriteLine(row[1]);
-                }
-                sw.Close();
-            }
-            catch (Exception ev)
-            {
-                Console.WriteLine("Exception: " + ev.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Executing finally block.");
-            }
-            */
-            Process myProcessPython = System.Diagnostics.Process.Start("D:\\Backup\\Projetos\\C\\C#\\solicitacoes_compra\\Data\\connectPython.pyw");
-            myProcessPython.WaitForExit();
+        {
+            using (Process myProcessPython = Process.Start("D:\\Backup\\Projetos\\C\\C#\\solicitacoes_compra\\Data\\connectPython.pyw"))
+                myProcessPython.WaitForExit();
         }
 
     }

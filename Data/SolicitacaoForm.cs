@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +14,8 @@ namespace Data
 {
     public partial class SolicitacaoForm : Form
     {
+        private Thread thread;
+
         public DALProduto dal_Produto = new DALProduto();
         public DALSolicitacao dal = new DALSolicitacao();
         public Solicitacao solicitacaoAtual;
@@ -67,7 +71,31 @@ namespace Data
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            dal.GetPrecos();
+            //Cria uma nova thread, indicando qual método essa thread deverá executar
+            thread = new Thread(() => {
+                dal.GetPrecos();
+                //Código que será executado em paralelo ao resto do código
+            });
+            //Inicia a execução da thread (em paralelo a esse código)
+            thread.Start();
+
+
+            progressBar1.Maximum = dal_Produto.GetIList().Count();
+            progressBar1.Visible = true;
+
+            for (int i = 0; i < progressBar1.Maximum; i++)
+            {
+                progressBar1.Value++;
+                Thread.Sleep(1000);
+            }
+
+            var res = MessageBox.Show("Preços atualizados com sucesso!", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+                progressBar1.Visible = false;
+                progressBar1.Value = 0;
+                FillTable();
+
         }
+
     }
 }

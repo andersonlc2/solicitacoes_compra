@@ -53,6 +53,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.dgvSolicitacoes = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -67,11 +68,12 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.dgvSolicitacoes, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.progressBar1, 0, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 210F));
@@ -79,7 +81,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 617);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 636);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -362,11 +365,22 @@
             this.label1.Text = "Solicitações";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar1.Enabled = false;
+            this.progressBar1.Location = new System.Drawing.Point(40, 620);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(40, 3, 40, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(704, 14);
+            this.progressBar1.TabIndex = 4;
+            this.progressBar1.Visible = false;
+            // 
             // SolicitacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 617);
+            this.ClientSize = new System.Drawing.Size(784, 636);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -412,5 +426,6 @@
         private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dtpData;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
