@@ -151,6 +151,7 @@
             // 
             // txtChamado
             // 
+            this.txtChamado.Enabled = false;
             this.txtChamado.Location = new System.Drawing.Point(241, 31);
             this.txtChamado.MaxLength = 5;
             this.txtChamado.Name = "txtChamado";
@@ -170,6 +171,7 @@
             // 
             // txtSolicitante
             // 
+            this.txtSolicitante.Enabled = false;
             this.txtSolicitante.Location = new System.Drawing.Point(241, 59);
             this.txtSolicitante.Name = "txtSolicitante";
             this.txtSolicitante.Size = new System.Drawing.Size(430, 22);
@@ -188,6 +190,7 @@
             // 
             // txtDepartamento
             // 
+            this.txtDepartamento.Enabled = false;
             this.txtDepartamento.Location = new System.Drawing.Point(241, 87);
             this.txtDepartamento.Name = "txtDepartamento";
             this.txtDepartamento.Size = new System.Drawing.Size(430, 22);
@@ -206,6 +209,7 @@
             // 
             // cbxProdutos
             // 
+            this.cbxProdutos.Enabled = false;
             this.cbxProdutos.FormattingEnabled = true;
             this.cbxProdutos.Location = new System.Drawing.Point(241, 115);
             this.cbxProdutos.Name = "cbxProdutos";
@@ -225,6 +229,7 @@
             // 
             // txtQuantidade
             // 
+            this.txtQuantidade.Enabled = false;
             this.txtQuantidade.Location = new System.Drawing.Point(241, 143);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(90, 22);
@@ -243,6 +248,7 @@
             // 
             // dtpData
             // 
+            this.dtpData.Enabled = false;
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpData.Location = new System.Drawing.Point(241, 171);
             this.dtpData.Name = "dtpData";
@@ -307,6 +313,7 @@
             this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "&Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnRemover
             // 
@@ -318,6 +325,7 @@
             this.btnRemover.TabIndex = 3;
             this.btnRemover.Text = "&Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnAtualizar
             // 
@@ -339,6 +347,7 @@
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // dgvSolicitacoes
             // 
@@ -350,8 +359,10 @@
             this.dgvSolicitacoes.Location = new System.Drawing.Point(3, 323);
             this.dgvSolicitacoes.Name = "dgvSolicitacoes";
             this.dgvSolicitacoes.ReadOnly = true;
+            this.dgvSolicitacoes.RowHeadersVisible = false;
             this.dgvSolicitacoes.Size = new System.Drawing.Size(778, 291);
             this.dgvSolicitacoes.TabIndex = 2;
+            this.dgvSolicitacoes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSolicitacoes_CellClick);
             // 
             // label1
             // 

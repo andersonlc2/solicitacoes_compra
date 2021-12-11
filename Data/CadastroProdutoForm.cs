@@ -57,7 +57,7 @@ namespace Data
             dgvProdutos.DataSource = dal.GetAllProdutos();
 
             dgvProdutos.Columns[0].Width = 60;
-            dgvProdutos.Columns[1].Width = 252;
+            dgvProdutos.Columns[1].Width = 295;
             dgvProdutos.Columns[2].Width = 120;
 
         }

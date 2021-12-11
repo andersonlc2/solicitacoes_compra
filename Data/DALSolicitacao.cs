@@ -36,16 +36,45 @@ namespace Data
 
         public void Update(Solicitacao solic)
         {
+            var command = new MySqlCommand(
+                "UPDATE Solicitacao SET Chamado=@chamado, Solicitante=@solicitante, Departamento=@dpt, " +
+                "DataChamado=@data, Quantidade=@qnt, IDProduto=@produto " +
+                "WHERE ID=@id",
+                connection
+            );
+            
+            command.Parameters.AddWithValue("@id", solic.ID);
+            command.Parameters.AddWithValue("@chamado", solic.Chamado);
+            command.Parameters.AddWithValue("@solicitante", solic.Solicitante);
+            command.Parameters.AddWithValue("@dpt", solic.Departamento);
+            command.Parameters.AddWithValue("@data", solic.DataChamado);
+            command.Parameters.AddWithValue("@qnt", solic.Quantidade);
+            command.Parameters.AddWithValue("@produto", solic.Produto.ID);
 
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        internal void Save(Solicitacao solicitacao)
+        {
+            if (solicitacao.ID == null)
+            {
+                Insert(solicitacao);
+            }
+            else
+            {
+                Update(solicitacao);
+            }
         }
 
         public DataTable GetAllSolic()
         {
             var adapter = new MySqlDataAdapter(
                 "SELECT Solicitacao.ID as ID, Descricao as Produto, Quantidade as 'Qnt.', PrecoMedio as 'Média MercadoLivre', " +
-                "MaiorPreco as 'Maior Preço', MenorPreco as 'Menor Preço', Chamado as 'Número Chamado', DataChamado as Data, Solicitante, Departamento " + 
+                "MaiorPreco as 'Maior Preço', MenorPreco as 'Menor Preço', DataChamado as 'Data Chamado', Chamado as 'Número Chamado', Solicitante, Departamento " + 
                 "FROM Solicitacao, Produto " +
-                "WHERE Produto.ID = Solicitacao.IDProduto"
+                "WHERE Produto.ID = Solicitacao.IDProduto "
                 , connection
             );
             var builder = new MySqlCommandBuilder(adapter);
@@ -58,7 +87,35 @@ namespace Data
 
         public Solicitacao GetByID(long? id)
         {
+            var dalProduto = new DALProduto();
             var solicitacao = new Solicitacao();
+            long IDProduto = -1;
+            
+            var command = new MySqlCommand(
+                "SELECT ID, Chamado, Solicitante, Departamento, IDProduto, DataChamado, Quantidade " +
+                "FROM solicitacao " +
+                "WHERE ID=@id",
+                connection
+            );
+            command.Parameters.AddWithValue("@id", id);
+
+            connection.Open();
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    solicitacao.ID = reader.GetInt64(0);
+                    solicitacao.Chamado = Convert.ToString(reader["Chamado"]);
+                    solicitacao.Solicitante = Convert.ToString(reader["Solicitante"]);
+                    solicitacao.Departamento = Convert.ToString(reader["Departamento"]);
+                    solicitacao.DataChamado = reader.GetDateTime(5);
+                    solicitacao.Quantidade = reader.GetInt32(6);
+                    IDProduto = reader.GetInt64(4);
+                }
+            }
+            connection.Close();
+            if (IDProduto > 0)
+                solicitacao.Produto = dalProduto.GetProdutoById(IDProduto);
 
             return solicitacao;
         }
@@ -69,5 +126,18 @@ namespace Data
                 myProcessPython.WaitForExit();
         }
 
+        public void Remove(Solicitacao solic)
+        {
+            var command = new MySqlCommand(
+                "DELETE FROM Solicitacao " +
+                "WHERE ID=@id",
+                connection
+            );
+            command.Parameters.AddWithValue("@id", solic.ID);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }
