@@ -1,0 +1,1 @@
+net stop 'SQL SERVER (SQLEXPRESS)'

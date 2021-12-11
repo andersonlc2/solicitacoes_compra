@@ -1,35 +1,30 @@
+from pricesMain import getPrice
 import pyodbc
+import time
+import os
 
 
-#data_connection = ("DRIVER={SQL Server};SERVER=DESKTOP-3M626FO\SQLEXPRESS;DATABASE=D:\BACKUP\PROJETOS\C\LIVRO_C#\ADO_NET\ADO_NET\APP.DATA\DATABASE.MDF;")
-data_connection = ("DRIVER={SQL Server};SERVER=DESKTOP-3M626FO\SQLEXPRESS;DATABASE=D:\BACKUP\PROJETOS\C\C#\SOLICITACOES_COMPRA\DATA\APP_DATA_HOUSE\DBSIMPLE_HOUSE.MDF;")
+#os.system("net start 'SQL SERVER (SQLEXPRESS)'")
 
+#import subprocess
+#subprocess.call(['runas', '/user:andersonescae@hotmail.com', "net start 'SQL SERVER (SQLEXPRESS)'"])
+
+data_connection = ("DRIVER={SQL Server};SERVER=DESKTOP-3M626FO\SQLEXPRESS;DATABASE=D:\BACKUP\PROJETOS\C\C#\SOLICITACOES_COMPRA\DATA\APP.DATA\DBSIMPLE.MDF;")
+
+pyodbc.pooling = False
 connection = pyodbc.connect(data_connection)
 print("Connection sussessful")
-
 cursor = connection.cursor()
 
-Cnpj = 12012025000165
-Nome = "Python"
-
-#comando = f"INSERT INTO Fornecedor(Cnpj, Nome) Values('{Cnpj}', '{Nome}')"
-comando = f"SELECT * FROM Produto"
-
+comando = "SELECT * FROM Produto"
 cursor.execute(comando)
 
-for produto in cursor.fetall():
-    print(produto.Descricao)
+for produto in cursor.fetchall():
+    PrecoMedio, MaiorPreco, MenorPreco = getPrice(produto.Descricao)
+    cursor.execute(f"UPDATE Produto SET PrecoMedio={PrecoMedio}, MaiorPreco={MaiorPreco}, MenorPreco={MenorPreco} WHERE ID={produto.ID}")
+    print(f"{produto.Descricao} = m:{PrecoMedio} >{MaiorPreco} <{MenorPreco}")
 
-
-"""while True:
-    row = cursor.fetchone()
-    if not row:
-        break
-    print(row.nome)"""
-"""while True:
-    row = cursor.fetchone()
-    if not row:
-        break
-        print(row.nome)"""
+print("End...")
 
 cursor.commit()
+connection.close()

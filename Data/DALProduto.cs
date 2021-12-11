@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace Data
 {
     public class DALProduto
     {
-        private SqlConnection connection = DBConnection.DB_Connection;
+        private MySqlConnection connection = DBConnection.DB_Connection;
 
         public void Save(Produto produto)
         {
@@ -22,7 +22,7 @@ namespace Data
 
         public void Insert(Produto produto)
         {
-            var command = new SqlCommand(
+            var command = new MySqlCommand(
                 "INSERT INTO Produto(Descricao, PrecoMedio, MaiorPreco, MenorPreco) " +
                 "Values(@descricao, @precomedio, @maior, @menor)", 
                 connection
@@ -40,14 +40,15 @@ namespace Data
 
         public DataTable GetAllProdutos()
         {
-            var adapter = new SqlDataAdapter(
+            var adapter = new MySqlDataAdapter(
                 "SELECT ID, Descricao, PrecoMedio " +
                 "FROM Produto",
                 connection
             );
-            var builder = new SqlCommandBuilder(adapter);
+            var builder = new MySqlCommandBuilder(adapter);
             var table = new DataTable();
             adapter.Fill(table);
+            connection.Close();
 
             return table;
         }
@@ -56,7 +57,7 @@ namespace Data
         {
             var produto = new Produto();
 
-            var command = new SqlCommand(
+            var command = new MySqlCommand(
                 "SELECT ID, Descricao, PrecoMedio " +
                 "FROM Produto " +
                 "WHERE id=@id",
@@ -84,7 +85,7 @@ namespace Data
 
         public void Update(Produto produto)
         {
-            var command = new SqlCommand(
+            var command = new MySqlCommand(
                 "UPDATE Produto " +
                 "SET Descricao=@descricao, PrecoMedio=@precomedio " +
                 "WHERE ID=@id",
@@ -101,7 +102,7 @@ namespace Data
 
         public void Remove(Produto produto)
         {
-            var command = new SqlCommand(
+            var command = new MySqlCommand(
                 "DELETE FROM Produto " +
                 "WHERE ID=@id",
                 connection
@@ -117,12 +118,12 @@ namespace Data
         {
             IList<Produto> list = new List<Produto>();
 
-            var adapter = new SqlDataAdapter(
+            var adapter = new MySqlDataAdapter(
                 "SELECT ID, Descricao, PrecoMedio, MaiorPreco, MenorPreco " +
                 "FROM Produto ",
                 connection
             );
-            var builder = new SqlCommandBuilder(adapter);
+            var builder = new MySqlCommandBuilder(adapter);
             var table = new DataTable();
             adapter.Fill(table);
             connection.Close();

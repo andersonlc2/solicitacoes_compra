@@ -37,6 +37,8 @@ namespace Data
         private void btnNovo_Click(object sender, EventArgs e)
         {
             btnGravar.Enabled = true;
+            btnNovo.Enabled = false;
+
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -53,13 +55,19 @@ namespace Data
                 Quantidade = Convert.ToInt32(txtQuantidade.Text)
             });
 
-
+            FillTable();
             btnGravar.Enabled = false;
+            btnNovo.Enabled = true;
         }
 
         private void FillTable()
         {
             dgvSolicitacoes.DataSource = dal.GetAllSolic();
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            dal.GetPrecos();
         }
     }
 }

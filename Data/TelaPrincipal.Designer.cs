@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.atualizaPreçosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaSolicitacaoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -51,17 +52,25 @@
             // cadastrosToolStripMenuItem
             // 
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.produtoToolStripMenuItem});
+            this.produtoToolStripMenuItem,
+            this.atualizaPreçosToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(91, 25);
-            this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(85, 25);
+            this.cadastrosToolStripMenuItem.Text = "Produtos";
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
-            this.produtoToolStripMenuItem.Text = "Produto";
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.produtoToolStripMenuItem.Text = "Cadastrar Produto";
             this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
+            // 
+            // atualizaPreçosToolStripMenuItem
+            // 
+            this.atualizaPreçosToolStripMenuItem.Name = "atualizaPreçosToolStripMenuItem";
+            this.atualizaPreçosToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.atualizaPreçosToolStripMenuItem.Text = "Atualizar Preços";
+            this.atualizaPreçosToolStripMenuItem.Click += new System.EventHandler(this.atualizaPreçosToolStripMenuItem_Click);
             // 
             // registrosToolStripMenuItem
             // 
@@ -103,5 +112,6 @@
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novaSolicitacaoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem atualizaPreçosToolStripMenuItem;
     }
 }
